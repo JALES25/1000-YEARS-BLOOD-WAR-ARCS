@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B90ADCC3-5B09-A959-AFC4-CF641918D7EB" name="TEAM">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 12:52:04 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="TEAM_studentnumber" id="900F0284-7809-4C22-6CA8-CDDBCA167F4E">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 12:52:31 UTC</createdTime>
+<commentInRDBMS><![CDATA[				]]></commentInRDBMS>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Team_Code" id="41E52804-46EC-1FEE-ABAB-2F84E6F361B6">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 12:53:05 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Team_Name" id="9D2D13C5-1C94-1473-373C-0C3EDE12FC02">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 12:54:04 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="City_Code" id="60784494-C1A3-E04E-9822-411673D2B705">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 12:58:57 UTC</createdTime>
+<generatorID>81588834-3B75-53F8-998B-E7C3B7F1A527</generatorID>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<referedAttribute>4E3B4983-EC03-9785-DB83-A2B38D60240A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="7068B44B-1077-10DF-2560-960EEE4CB424" name="TEAM PK">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 12:53:23 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>41E52804-46EC-1FEE-ABAB-2F84E6F361B6</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

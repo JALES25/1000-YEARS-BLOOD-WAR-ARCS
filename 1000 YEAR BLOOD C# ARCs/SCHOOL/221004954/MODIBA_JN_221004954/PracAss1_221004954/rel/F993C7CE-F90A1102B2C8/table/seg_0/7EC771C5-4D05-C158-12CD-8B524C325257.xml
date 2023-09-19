@@ -1,0 +1,68 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7EC771C5-4D05-C158-12CD-8B524C325257" name="COACH">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:23:35 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="COACH_studentnumber" id="F5ABA0FC-DBD1-A7BB-6F9E-0B8A798FC030">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:38:22 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Coach_Number" id="9D10A585-6F72-9B72-3207-99B8A67C4D5D">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:38:22 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Coach_Name" id="C2E04506-174D-D5DA-186B-C181514922A4">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:38:22 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Coach_Age" id="40A1DA10-214A-FCE6-225B-D9C1BFAA7599">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 14:10:01 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="66D23462-33EC-9813-3B87-8DF250E05B2C" name="COACH_PK">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 14:08:00 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9D10A585-6F72-9B72-3207-99B8A67C4D5D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="Table" objectID="9E437DB8-12FA-BFB6-1052-3488D1A87DB6" name="CITY" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="7EC771C5-4D05-C158-12CD-8B524C325257" name="COACH" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="404E798C-C72A-D2D9-6BA7-D1CBF0C527EC" name="RIDER" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="837881C0-13D4-8046-6A7E-209CC8A1D2B9" name="TEAM" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" propertySourceId="" propertyTargetId=""/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

@@ -1,0 +1,67 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="404E798C-C72A-D2D9-6BA7-D1CBF0C527EC" name="RIDER">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:23:15 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="RIDER_studentnumber" id="6EBC544F-033A-DC43-1ACA-55C0F9A4366D">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:37:18 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Rider_Number" id="177EF180-B7B6-695F-5AD1-FE985949DFC2">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:37:49 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Rider_Name" id="4A76DFF7-06DE-19BB-2470-2765703EE569">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:37:49 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Rider_Age" id="FAC529D1-A3FF-18A8-6768-DBF1234F24E3">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 14:06:56 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D7038DCA-F932-C22C-F84D-8D49E2310B95" name="RIDER_PK">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 14:08:38 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="177EF180-B7B6-695F-5AD1-FE985949DFC2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

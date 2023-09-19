@@ -1,0 +1,56 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9E437DB8-12FA-BFB6-1052-3488D1A87DB6" name="CITY">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:23:06 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="TEAM_studentnumber" id="92B18D46-99AE-EFD2-89AE-771CD3E38D07">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:35:23 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Team_Code" id="F6AD6F7C-00AE-1255-4413-FC55E57D4EB5">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:36:04 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Team_Name" id="7513B5DA-E110-294D-F70A-43BAD131D5D4">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:36:04 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3413FC70-4A86-E4E1-E9BF-CD36E96B91CA" name="CITY_PK">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 14:05:29 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F6AD6F7C-00AE-1255-4413-FC55E57D4EB5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

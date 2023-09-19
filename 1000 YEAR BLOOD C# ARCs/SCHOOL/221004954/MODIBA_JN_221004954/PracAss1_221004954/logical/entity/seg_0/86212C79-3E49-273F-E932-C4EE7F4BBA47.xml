@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="86212C79-3E49-273F-E932-C4EE7F4BBA47" name="RIDER">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 10:12:27 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="RIDER_studentnumber" id="E14343A5-2341-E294-729A-E2B81D530453">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 12:24:39 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Rider_Number" id="B39EFACE-0571-CB44-181A-D5FC010B0A2B">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 12:24:56 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Rider_Name" id="0BDEAFFA-963A-A3E2-D653-8A854DD275B5">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 12:25:52 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Rider_Age" id="58125367-1D50-D727-B276-7902FAED9D3E">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 12:26:56 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="55F36F39-51A6-5CB5-7A9E-4D5CAEC69B9A" name="RIDER PK">
+<createdBy>27684</createdBy>
+<createdTime>2023-03-17 12:25:34 UTC</createdTime>
+<ownerDesignName>PracAss1_221004954</ownerDesignName>
+<engineerTo>
+<item key="F993C7CE-A267-1ECA-8CA8-F90A1102B2C8" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B39EFACE-0571-CB44-181A-D5FC010B0A2B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
