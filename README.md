@@ -1,1 +1,3 @@
 # 1000-YEARS-BLOOD-WAR-ARCS
+
+#DAY 1 ✓✓✓✓✓
