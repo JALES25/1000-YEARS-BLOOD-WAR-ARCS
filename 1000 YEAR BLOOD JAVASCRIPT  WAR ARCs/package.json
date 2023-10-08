@@ -1,15 +1,12 @@
 {
-  "name": "1000-years-blood-javascript-war-arc",
+  "name": "1000-year-blood-javascript-war-arcs",
   "version": "1.0.0",
   "description": "",
   "main": "War.test.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "jest": "^29.7.0"
-  }
+  "license": "ISC"
 }
