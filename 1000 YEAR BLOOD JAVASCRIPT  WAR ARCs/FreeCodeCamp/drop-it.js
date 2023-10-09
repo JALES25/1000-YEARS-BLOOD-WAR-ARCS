@@ -15,10 +15,23 @@ function dropElements(arr, func) {
   return arr.filter((num, index) => {
     if (func(num)) {
       rest = index
-      // return index
     }
     return index >= rest
   } );
+}
+
+function dropElements2(arr, func) {
+  let rest = -1; // Initialize rest with an invalid index
+
+  // Use findIndex to find the first element that passes the test
+  const firstIndex = arr.findIndex(func);
+
+  if (firstIndex !== -1) {
+    rest = firstIndex;
+  }
+
+  // Use filter to create a new array with elements starting from rest
+  return arr.filter((_, index) => index >= rest);
 }
 
 // console.log(dropElements([1, 2, 3], function(n) {return n < 3; }))
