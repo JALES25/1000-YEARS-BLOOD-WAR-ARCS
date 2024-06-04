@@ -4,7 +4,7 @@
    """
 
 
-print("Welcome to Tick-Tack-Toe, by TYLONs", "\n")
+print("Welcome to Tick-Tack-Toe, by TYLONs17", "\n")
 
 #################################################
 #strings arent immutable in python im switching to array as board

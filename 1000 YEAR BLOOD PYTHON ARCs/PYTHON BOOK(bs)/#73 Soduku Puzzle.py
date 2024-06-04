@@ -5,8 +5,15 @@
     A well-formed Sudoku puzzle will have only one possible valid solution."""
  
 import random
+import time
+import copy
    
 print("Welcome to Soduku Puzzle, by TYLONs17", "\n")
+
+####### TODO: 
+#   add way to manipulate the number of empty cells in the board (difficulty adjustments) --in progress--
+#   add way to determine win / lose conditions
+#
 
 #################################################
 #This will be the display pattern i will use
@@ -25,6 +32,8 @@ print("Welcome to Soduku Puzzle, by TYLONs17", "\n")
 #9[-][-][-] | [-][-][-] | [-][-][-]
 #
 #"""
+
+
 
 #
 lTop =   "    A    B    C         D    E    F         G    H    I"
@@ -62,6 +71,9 @@ g8 = ['G7','H8','I9', 'G7','H8','I9', 'G7','H8','I9']
 navGrid = [[*g0],[*g1],[*g2],[*g3],[*g4],[*g5],[*g6],[*g7],[*g8]]
 
 
+# Another Main Grid (bruh) 
+sudoku_board = [[["-"] for _ in range(9)] for _ in range(9)]
+
 # Board algos
 class dogrid:
     # def __init__ (self, mainGrid, subG, rowG, colG):
@@ -71,36 +83,53 @@ class dogrid:
     #     self.colG = colG
     
     
+    
         # Algo to Display the Soduku Board
-    def genBoard(): 
+    def genBoard(grid): 
         outputBoard = "\n"
         
         outputBoard += lTop + "\n"
         rowNum = 0
         
         for i in range(0,9,3): # First subgrid row
-            outputBoard += f"{rowNum+1} {mainGrid[0][i]}{mainGrid[0][i+1]}{mainGrid[0][i+2]} {vfillSpace} {mainGrid[1][i]}{mainGrid[1][i+1]}{mainGrid[1][i+2]} {vfillSpace} {mainGrid[2][i]}{mainGrid[2][i+1]}{mainGrid[2][i+2]} \n"
+            outputBoard += f"{rowNum+1} {grid[0][i]}{grid[0][i+1]}{grid[0][i+2]} {vfillSpace} {grid[1][i]}{grid[1][i+1]}{grid[1][i+2]} {vfillSpace} {grid[2][i]}{grid[2][i+1]}{grid[2][i+2]} \n"
             rowNum += 1
             
         outputBoard += hfillSpace + "\n"
         
         for i in range(0,9,3): # Second subgrid row
-            outputBoard += f"{rowNum+1} {mainGrid[3][i]}{mainGrid[3][i+1]}{mainGrid[3][i+2]} {vfillSpace} {mainGrid[4][i]}{mainGrid[4][i+1]}{mainGrid[4][i+2]} {vfillSpace} {mainGrid[5][i]}{mainGrid[5][i+1]}{mainGrid[5][i+2]} \n"
+            outputBoard += f"{rowNum+1} {grid[3][i]}{grid[3][i+1]}{grid[3][i+2]} {vfillSpace} {grid[4][i]}{grid[4][i+1]}{grid[4][i+2]} {vfillSpace} {grid[5][i]}{grid[5][i+1]}{grid[5][i+2]} \n"
             rowNum += 1
         
         outputBoard += hfillSpace + "\n"
         
         # subGrid9[i+2] = [f'{9}'] # Don mind me im just existing for testing 
         for i in range(0,9,3): # Third subgrid row
-            outputBoard += f"{rowNum+1} {mainGrid[6][i]}{mainGrid[6][i+1]}{mainGrid[6][i+2]} {vfillSpace} {mainGrid[7][i]}{mainGrid[7][i+1]}{mainGrid[7][i+2]} {vfillSpace} {mainGrid[8][i]}{mainGrid[8][i+1]}{mainGrid[8][i+2]} \n"
+            outputBoard += f"{rowNum+1} {grid[6][i]}{grid[6][i+1]}{grid[6][i+2]} {vfillSpace} {grid[7][i]}{grid[7][i+1]}{grid[7][i+2]} {vfillSpace} {grid[8][i]}{grid[8][i+1]}{grid[8][i+2]} \n"
             rowNum += 1
 
         print("--snip--")
         print(outputBoard)
         print("--snip--")
 
+
+    # Algo to empty cells
+    def emptyCells(grid, num_empty_cells):
+        # Flatten the grid to a list of cell coordinates
+        cell_coords = [(i, j) for i in range(9) for j in range(9)]
+        
+        # Randomly shuffle the cell coordinates
+        random.shuffle(cell_coords)
+        
+        # Empty the desired number of cells
+        for i in range(num_empty_cells):
+            x, y = cell_coords[i]
+            grid[x][y] = ["-"]
+
+        return grid
+    
        
-    def checkPlacing(placing):
+    def checkPlacing(placing, mainGrid = mainGrid):
         subG = []
         rowG = []
         colG = []
@@ -209,6 +238,7 @@ class dogrid:
         # print(rowG)
         # print(colG)
         # print('------')
+        # col_index = ord(placing[0].upper()) - ord('A')
         col = placing[0].upper()
         row = int(placing[1])
         num = int(placing[3]) if len(placing) == 4 else None
@@ -245,18 +275,10 @@ class dogrid:
         else:
             # print("Number already exists in grid")
             return False
-            
-    
-    def genNumbs():
-        
-        # def checkEmpty(arr):
-        #     noEmpty = True
-        #     for i in range(len(arr)):
-        #         if not(isinstance(int(arr[i][0]), (int, float))):
-        #             noEmpty = False
-        #     return noEmpty
-        
-        def checkEmpty(main_grid):
+     
+     
+     
+    def checkEmpty(main_grid):
             """
             Check if the main grid contains any cell with the value ["-"]. Which represents th default empty value
             """
@@ -264,34 +286,37 @@ class dogrid:
                 if any(cell == ["-"] for row in subgrid for cell in row):
                     return True  # If any cell with value ["-"] is found, return True
                 
-                
+            # for i in range(len(main_grid)):
+            #     if not(isinstance(int(main_grid[i][0]), (int, float))):
+            #         return False
+            #     return True 
 
-            return False  # If no such cell is found, return False
-
+            return False  # If no such cell is found, return False    
+        
+    
+    def genNumbs():
         
         # i want to iterate through the mainGrid and the navGrid so that the dogrid.validate() gets the co-ordinates of cell 
         def gengrid(arr1, arr2):
             while True:
-                for index, (arr1, arr2) in enumerate(zip(arr1, arr2)):
-                    # print(arr1)
-                    # print(arr2)
+                for index, (arr1_item, arr2_item) in enumerate(zip(arr1, arr2)):
                     
-                    for place, key in zip(arr1, arr2):
+                    for place, key in zip(arr1_item, arr2_item):
                         num = random.randint(1,9)
                         placing = f'{key} {num}'
-                        
-                        # print(place[0], placing)
 
-                        if dogrid.validate(placing):
+                        if dogrid.validate(placing): # TODO: also needs to check if the current cell is empty
                             place[0] = placing[3]
                        
                     # placing = f'{arr2[index]} {num}'
                     # if (dogrid.validate(placing)): # nothing like a 40 min rant/tantrun to then say no theres a better way 
                     #     arr1[index][0] = f'{num}'
                         
-                # dogrid.genBoard()
+                # dogrid.genBoard(mainGrid)
                     
-                if checkEmpty(arr1) == False:
+                
+
+                if dogrid.checkEmpty(arr1) == False:
                     break
          
 
@@ -300,38 +325,74 @@ class dogrid:
             gengrid(mainGrid, navGrid)
             
     
-    
- 
-    
-
-
-FirstBoard =  dogrid.genNumbs()  # dogrid.genNums() method currently has no return implementation -- yes yes i knw
-dogrid.genBoard()
-
-
-
-
-
-# print("Enter a move, or RESET, NEW, UNDO, ORIGINAL, or QUIT:", "For example, a move looks like 'B4 9'")
-# print("--snip--")
-
-
-
-
-
-
-
-
-
+   
+   
+   
+# Utils   
 class Utils: 
-    def validate(move):
-        placings = dogrid.checkPlacing(move)
+    def getBoard(grid): 
+        outputBoard = "\n"
+        
+        outputBoard += lTop + "\n"
+        rowNum = 0
+        
+        for i in range(0,9,3): # First subgrid row
+            outputBoard += f"{rowNum+1} {grid[0][i]}{grid[0][i+1]}{grid[0][i+2]} {vfillSpace} {grid[1][i]}{grid[1][i+1]}{grid[1][i+2]} {vfillSpace} {grid[2][i]}{grid[2][i+1]}{grid[2][i+2]} \n"
+            rowNum += 1
+            
+        outputBoard += hfillSpace + "\n"
+        
+        for i in range(0,9,3): # Second subgrid row
+            outputBoard += f"{rowNum+1} {grid[3][i]}{grid[3][i+1]}{grid[3][i+2]} {vfillSpace} {grid[4][i]}{grid[4][i+1]}{grid[4][i+2]} {vfillSpace} {grid[5][i]}{grid[5][i+1]}{grid[5][i+2]} \n"
+            rowNum += 1
+        
+        outputBoard += hfillSpace + "\n"
+        
+        # subGrid9[i+2] = [f'{9}'] # Don mind me im just existing for testing 
+        for i in range(0,9,3): # Third subgrid row
+            outputBoard += f"{rowNum+1} {grid[6][i]}{grid[6][i+1]}{grid[6][i+2]} {vfillSpace} {grid[7][i]}{grid[7][i+1]}{grid[7][i+2]} {vfillSpace} {grid[8][i]}{grid[8][i+1]}{grid[8][i+2]} \n"
+            rowNum += 1
+
+        # print("--snip--")
+        # print(outputBoard)
+        # print("--snip--")
+        
+        return outputBoard
+    
+    def validate(placing):
+        placings = dogrid.checkPlacing(placing)
         subG = placings["subG"]
-        print(subG)
         rowG = placings["rowG"]
-        print(rowG)
         colG = placings["colG"]
-        print(colG)
+
+        col_index = ord(placing[0].upper()) - ord('A')
+        row = int(placing[1])
+        num = int(placing[3]) if len(placing) == 4 else None
+
+        if num is None:
+            return False
+
+        def notInSubGrid(arr, num):
+            # Extract the subgrid
+            subgrid = [row[col_index * 3:(col_index + 1) * 3] for row in arr[row // 3 * 3:(row // 3 + 1) * 3]]
+            return num not in [cell for row in subgrid for cell in row]
+
+        def notInColumn(arr, num):
+            return num not in [row[col_index] for row in arr]
+
+        def notInRow(arr, num):
+            return num not in [cell for cell in arr[row]]
+
+        return notInSubGrid(subG, num) and notInRow(rowG, num) and notInColumn(colG, num)
+
+    def validateMove(move, mainGrid = mainGrid):
+        placings = dogrid.checkPlacing(move, mainGrid)
+        subG = placings["subG"]
+        # print(subG)
+        rowG = placings["rowG"]
+        # print(rowG)
+        colG = placings["colG"]
+        # print(colG)
         
         # col = move[0].upper()
         # row = int(move[1])
@@ -361,21 +422,52 @@ class Utils:
             for row in arr:
                 for cell in row:
                     if cell == str(num):
-                        print("check3B - \t number exists in the column")
+                        print("check3 - \t number exists in the column")
                         return False
             return True  #Supposed to return true when num not in Column
             
         
         
             
-        if (notInSubGrid(subG, num) and notInRow(rowG, num) and notInColumn(colG, num)):
+        if (notInSubGrid(subG, num) and notInRow(rowG, num) and notInColumn(colG, num)): # TODO || This check needs proper implemetation or refactoring, currently not suitable as a validation to generate a valid grid
             # print("Number does not exist in grid or something went wrong but is passes still, \t Can't be bothered to check so it's whatever")
-            return True
+            return True # If the number is not in the subgrid, row and column then allow the number to be inserted
         else:
             # print("Number already exists in grid")
             return False
         
+     
+    # Algo for puzzle dificulty
+    def generate_puzzle(difficulty):
+        dogrid.genNumbs()
+    
+        if difficulty == 'easy':
+            num_empty_cells = random.randint(20, 30)
+        elif difficulty == 'medium':
+            num_empty_cells = random.randint(31, 45)
+        elif difficulty == 'hard':
+            num_empty_cells = random.randint(46, 60)
+        else:  # very hard
+            num_empty_cells = random.randint(61, 81)
+
+        dogrid.emptyCells(mainGrid, num_empty_cells)
+
+        return mainGrid   
         
+        
+    def getNavIndex(cellToFind): 
+        for subgrid in navGrid:
+            # print(subgrid)
+            for cell in subgrid:
+                # print(cell)
+                if cell == cellToFind:
+                    return subgrid.index(cell)
+        return None  # return nothing if the cell isn't found
+    
+        
+        # for subgrid in navGrid:
+        #         if any(cell0 == cell for row in subgrid for cell0 in row):
+        #             return subgrid.index(cell)  # If any cell with matching value in cell is found, get the index
         
         
 def userMove(): # Get user move
@@ -388,19 +480,220 @@ def userMove(): # Get user move
         elif move[0].upper() == "N": 
             dogrid.genNumbs() # again yes yes i knw
             
-            dogrid.genBoard()
-        # Add conditions for other commands and moves
+            dogrid.genBoard(mainGrid)
         else:
-            if Utils.validate(move):
+            if Utils.validateMove(move):
                 # Update the board based on the user's move
                 col = move[0].upper()
                 row = int(move[1])
-                cell = col + row
+                cell = col + str(row)
                 num = int(move[3])
-                mainGrid[row - 1][navGrid.index(cell)] = [str(num)]
-                dogrid.genBoard()
+                
+                navIndex = Utils.getNavIndex(cell)
+                
+                    
+                mainGrid[row - 1][navIndex] = [str(num)]
+                if mainGrid[row - 1][navIndex] == num:
+                    print(f"Placed the number {num} on cell {cell}")
+                else:
+                    print("OHhhh No!!! \t Couldn't place the number something went wrong!!")
+                dogrid.genBoard(mainGrid)
             else:
                 print("Invalid move. Try again.")
 
-# Call the userMove function to start the interaction
-userMove()
+   
+
+
+
+
+#################################################
+#################################################
+#################################################
+#################################################
+#################################################
+
+# print(Utils.getNavIndex("C2"))
+
+# # Generate the grid
+# dogrid.genNumbs()  # -- yes yes i knw
+
+# # Display the grid  
+# dogrid.genBoard(mainGrid)
+
+
+# print("--Here we go")
+# Utils.generate_puzzle("medium")
+# dogrid.genBoard(mainGrid)
+# # Call the userMove function to start the interaction
+# userMove()
+
+
+
+
+
+
+
+""" Romaticism isn't real
+
+        ....(Fantasy - Mariah Carey) - the bg sounds and mood setting
+             
+        she was into this idea of me from her delusioned hopes and dreams
+        i got to see her disapointed at that incomplete version of me
+        it didn't matter, did it
+        i thought she liked me, oh how the world could turn oh so morbid
+        Flikkrd an already timid soul.. cold, cold, cold.
+        
+        everything went quiet for me
+        i could only hear the sound and vibration of my heart beating,
+        soon after the faint sound of my own distorted breathing.... 
+        the next thing i knew 
+        
+        get out my fkn face
+        i flkkrd into JAQUE, i am all smiles
+        coinsidental monster, nightmarish menace
+        
+        .....
+        
+        "hopefully i could find my mind coz i've lost somewhere along the way
+        and i pray that you could find some time coz there's only so many minutes in the day
+        come sink with me into the abyss, i'm looking forward to making memories to reminise" - Justin B (Everything)
+        
+"""
+
+class Romaticism:
+    chosenDif = False
+    game_states = [] # State manegement in python just as in React ;)
+    
+    def generate_sudoku(self):    
+        
+        def is_valid(board, row, col, num):
+            # Check if the number is not in the same row, column, or 3x3 subgrid
+            return (
+                [str(num)] not in board[row] and
+                [str(num)] not in [board[i][col] for i in range(9)] and
+                [str(num)] not in [board[i][j] for i in range(row - row % 3, row - row % 3 + 3) for j in range(col - col % 3, col - col % 3 + 3)]
+            )
+
+        def solve(board): # Algo to fill the board
+            for i in range(9):
+                for j in range(9):
+                    if board[i][j] == ["-"]:
+                        for num in range(1, 10):
+                            if is_valid(board, i, j, num):
+                                board[i][j] = [str(num)]
+                                if solve(board):
+                                    return True
+                                board[i][j] = ["-"]
+                        return False
+            return True
+        
+        solve(sudoku_board)
+
+        return sudoku_board
+    
+    
+    # Remove some numbers to create the puzzle
+    def empty_cells(self, grid, num_empty_cells):
+        for _ in range(num_empty_cells):
+            row, col = random.randint(0, 8), random.randint(0, 8)
+            grid[row][col] = ['-']
+            
+    # Algo for puzzle dificulty
+    def adjust_difficulty(self, grid):
+        print("Enter Sudoku board difficulty, EASY, MEDIUM, HARD.")
+        difficulty = input("> ") 
+        print(f"\t You have selected {difficulty.upper()} difficulty. \n")
+
+        if difficulty.upper() == 'EASY':
+            num_empty_cells = random.randint(20, 30)
+        elif difficulty.upper() == 'MEDIUM':
+            num_empty_cells = random.randint(31, 45)
+        elif difficulty.upper() == 'HARD':
+            num_empty_cells = random.randint(46, 60)
+        else:  # very hard (I am a manace)
+            num_empty_cells = random.randint(61, 81)
+
+        self.empty_cells(grid, num_empty_cells)
+
+        return grid
+
+
+    def userMove(self): # Get user move
+        while True:
+            sudoku_grid = self.generate_sudoku()
+            
+            
+            #     dogrid.genBoard(sudoku_grid)
+            #     self.chosenDif = True
+            time.sleep(3)
+            
+            if self.chosenDif == False:
+                self.adjust_difficulty(sudoku_grid)
+                self.chosenDif = True
+                
+                time.sleep(2)
+            
+                dogrid.genBoard(sudoku_grid)
+            
+            
+                
+            time.sleep(3)
+            
+            print("\n Enter a move, or RESET, NEW, UNDO, ORIGINAL, or QUIT:", "For example, a move looks like 'B4 9' \n")
+            # TODO -Add RESET, UNDO and ORIGINAL functionality
+            move = input("> ")
+            if move[0].upper() == "Q":
+                print("Thanks for Playing... \t Goodbye!")
+                break
+            elif move[0].upper() == "N":       
+                print("Staring a new game please wait...")
+                time.sleep(5)
+                
+                self.adjust_difficulty(sudoku_grid)
+                dogrid.genBoard(sudoku_grid)
+                
+                # Romaticism.userMove() # Recursion on user inputs. must comply
+            elif move[0].upper() == "U":
+                if self.game_states:
+                    sudoku_grid = self.game_states.pop()
+                    dogrid.genBoard(sudoku_grid)
+                else:
+                    print("No Need, You didn't make a Move yet to undo.")
+            else:
+                if Utils.validateMove(move, sudoku_grid):
+                    self.game_states.append(copy.deepcopy(sudoku_grid))
+                    
+                    # Update the board based on the user's move
+                    col = move[0].upper()
+                    row = int(move[1])
+                    cell = col + str(row)
+                    num = int(move[3])
+                    
+                    navIndex = Utils.getNavIndex(cell)
+                    
+                    print(sudoku_grid[row - 1][navIndex])  
+                    sudoku_grid[row - 1][navIndex] = [str(num)]
+                    print(sudoku_grid[row - 1][navIndex])
+                    if sudoku_grid[row - 1][navIndex] == [str(num)]:
+                        time.sleep(2)
+                        print(f"\t Placed the number {num} on cell {cell} \n")
+                    else:
+                        time.sleep(8)
+                        print("OHhhh No!!! \t Couldn't place the number something went wrong!!")
+                        
+                    time.sleep(4)
+                    dogrid.genBoard(sudoku_grid)
+                else:
+                    print("Invalid move. Try again.")
+
+
+
+sudoku_game = Romaticism()
+sudoku_game.userMove()  
+
+
+
+
+
+
+
